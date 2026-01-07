@@ -1,0 +1,17 @@
+```mermaid
+sequenceDiagram
+	participant browser
+	participant server
+	
+	Note right of browser: After writing the "test" message and pressing the "send" button on the form
+
+	Note right of browser: spa.js intercepts form submit
+	
+	browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+	activate server
+	Note right of server: paylod {content: "test", date: "2026-01-06T23:51:08.654Z"}
+	server-->>browser: 201 created with message:"note created"
+	deactivate server
+
+	Note right of browser: Browser updates with the new note without reloading the page
+```
